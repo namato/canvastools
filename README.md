@@ -78,6 +78,6 @@ Matched student Schwarzenegger, Katherine, upload score (y/n): y
 100%...done
 ```
 
-#### License 
+#### Other 
 
 MIT. Feedback/improvements welcome.
