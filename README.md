@@ -78,7 +78,7 @@ The script will always prompt to ensure that it has found the right user, overri
 -y option. In the case of multiple matches, simply press 'n' until the correct match is found.
 
 ```
-scoreit.py 123456 111222 Schwarzenegger 20
+# scoreit.py 123456 111222 Schwarzenegger 20
 Matched student Schwarzenegger, Arnold, upload score (y/n): n
 Matched student Schwarzenegger, Katherine, upload score (y/n): y
 100%...done
