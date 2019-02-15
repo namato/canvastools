@@ -69,7 +69,7 @@ to assign scores and (optionally) text comments with assignment submissions.
 
 will assign the score of 20 to user Schwarzenegger for assignment 111222 in course 123456.
 The script will always prompt to ensure that it has found the right user, override this with the
--y option. In the case of multiple matches, simply press 'n' until the correct match is found.
+-y option. In the case of multiple matches, simply press 'n' until the correct match is found.  For example:
 
 ```
 # scoreit.py 123456 111222 Schwarzenegger 20
@@ -77,7 +77,17 @@ Matched student Schwarzenegger, Arnold, upload score (y/n): n
 Matched student Schwarzenegger, Katherine, upload score (y/n): y
 100%...done
 ```
+You can also use the -c option to add a comment:
+```
+    scoreit.py -c "You'll be back" 123456 111222 Schwarzenegger 20
+```
 
 #### Other 
 
-MIT. Feedback/improvements welcome.
+The intended general workflow is:
+- Use assigntool.py to determine the ID of an assignment
+- Download all the submissions for that assignment into a directory
+- Read/compile each student's entry
+- Upload the score and comments with scoreit.py
+
+Feedback/improvements welcome.
