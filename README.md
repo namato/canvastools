@@ -36,25 +36,19 @@ can be used to locate the IDs for assignments in a course.  Examples:
 will list the assignment with ID 111222.
 
 ```
-assigntool.py 123456 -a Recursion
+    assigntool.py 123456 -a Recursion
 ```
 
 will list all assignments with 'Recursion' in the title.
 
 ```
-assigntool.py 123456 -a Recursion
-```
-
-will list all assignments with 'Recursion' in the title.
-
-```
-assigntool.py 123456 -a 111222 -d
+    assigntool.py 123456 -a 111222 -d
 ```
 
 will download all submissions for assignment 111222 into an automatically generated tmpdir.
 
 ```
-assigntool.py 123456 -a 111222 -d -s /home/foo/course/assign1
+    assigntool.py 123456 -a 111222 -d -s /home/foo/course/assign1
 ```
 
 will download all submissions for assignment 111222 into the directory /home/foo/course/assign1.
@@ -70,7 +64,7 @@ Use
 to assign scores and (optionally) text comments with assignment submissions.
 
 ```
-scoreit.py 123456 111222 Schwarzenegger 20
+    scoreit.py 123456 111222 Schwarzenegger 20
 ```
 
 will assign the score of 20 to user Schwarzenegger for assignment 111222 in course 123456.
