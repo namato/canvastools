@@ -1,4 +1,4 @@
-#!/home/namato/anaconda3/bin/python
+#!/usr/bin/env python
 
 # XXX needed because of
 # https://github.com/Anorov/PySocks/issues/119
