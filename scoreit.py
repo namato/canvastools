@@ -12,6 +12,7 @@ import argparse
 import sys
 from pprint import pprint
 from canvasgrader import CanvasGrader
+import time
 
 # add your info here
 API_URL = "https://mycampus.instructure.com"
@@ -84,7 +85,8 @@ def main():
     if (args.c != None):
         k2 = 'grade_data[{student_id}][text_comment]'.format(student_id=choice)
         grades_for_canvas[k2] = args.c
-    status = assign.submissions_bulk_update(**grades_for_canvas))
+    assign = cr.get_assignment(args.assign_id)
+    status = assign.submissions_bulk_update(**grades_for_canvas)
     pct = status.completion
     while (True):
         if (pct == None):
