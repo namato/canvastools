@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # XXX needed because of
 # https://github.com/Anorov/PySocks/issues/119
@@ -64,10 +64,19 @@ def main():
         d = tempfile.mkdtemp()
 
     print('Saving to directory %s' % d)
-    
+    print('Updating %s/.course_id...' % d)
+    df1 = open("%s/.course_id" % d, "w")
+    df1.write(str(args.course_id))
+    df1.close()
+    print('Updating %s/.assign_id...' % d)
+    df1 = open("%s/.assign_id" % d, "w")
+    df1.write(str(args.a))
+    df1.close()
+
     course = canvas.get_course(args.course_id)
     a = course.get_assignment(args.a)
-    slist = a.get_submissions()
+    slist = a.get_submissions(include=['submission_comments'])
+    #pprint(a)
     for s in slist:
         #pprint(s)
         #print(s.user_id)
@@ -91,6 +100,23 @@ def main():
                     c.perform()
                     c.close()
             print('saved %d attachments for user %s' % (cnt, uname))
+        if (hasattr(s, 'submission_comments')):
+            udir = '%s/%s' % (d, dejunk(uname))
+            if (os.path.isdir(udir) == False):
+                os.mkdir(udir)
+            fn = 'comments.txt'
+            cnt = 0
+            with open('%s/%s' % (udir, fn), 'wb') as of:
+                for com in s.submission_comments:
+                    cnt += 1
+                    authobj = com['author']
+                    auth = authobj['display_name']
+                    txt = com['comment']
+                    cat = com['created_at']
+                    of.write(bytes("%s (%s): %s\n\n" % \
+                            (auth, cat, txt), "utf-8"))
+                of.close()
+            print('saved %d comments for user %s' % (cnt, uname))
 
 if __name__ == "__main__":
     main()
